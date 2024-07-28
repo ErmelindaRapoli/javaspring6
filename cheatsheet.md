@@ -15,3 +15,22 @@ The files are generated under username/.ssh/
 
 Copy the content of the id_xxx.pub file inside your account in GitHub.
 Account -> Settings > SSH and GPG keys -> New SSH key and past there the key.
+
+### From local directory to initialize a new repository
+> git init
+
+this command will create the directory .git
+
+### Add files or directory or all
+> git add filename
+
+> git add foldername
+
+> git add .
+
+### See the status of local repo with remote repo
+> git status -uno
+
+### Remove a local repository
+> rm -rf .git
+
