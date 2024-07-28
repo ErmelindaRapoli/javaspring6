@@ -5,19 +5,23 @@ import org.springframework.stereotype.Component;
 
 import guru.springframework.spring6webapp.domain.Author;
 import guru.springframework.spring6webapp.domain.Book;
+import guru.springframework.spring6webapp.domain.Publisher;
 import guru.springframework.spring6webapp.repositories.AuthorRepository;
 import guru.springframework.spring6webapp.repositories.BookRepository;
+import guru.springframework.spring6webapp.repositories.PublisherRepository;
 
 @Component
 public class BootstrapData implements CommandLineRunner{
 
     private final AuthorRepository  authorRepository;
     private final BookRepository    bookRepository;
+    private final PublisherRepository publisherRepository;
 
 
-    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
 
@@ -31,8 +35,16 @@ public class BootstrapData implements CommandLineRunner{
         ddd.setTitle("Domain Driven Design");
         ddd.setIsbn("123456");
 
+        Publisher publisher1 = new Publisher();
+        publisher1.setAddress("Claremont Street");
+        publisher1.setCity("Melbourne");
+        publisher1.setPublisherName("Mondadori");
+        publisher1.setState("Victoria");
+        publisher1.setZipCode("VC12345");
+
         Author ericSaved = authorRepository.save(eric);
         Book dddSaved = bookRepository.save(ddd);
+        publisherRepository.save(publisher1);
 
         Author rod = new Author();
         rod.setFirstName("Rod");
@@ -54,6 +66,7 @@ public class BootstrapData implements CommandLineRunner{
         System.out.println("In Bootstrap");
         System.out.println("Author Count: " + authorRepository.count());
         System.out.println("Book Count: " + bookRepository.count());
+        System.out.println("Pusblisher count: " + publisherRepository.count());
     }
 
 }
