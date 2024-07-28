@@ -59,4 +59,25 @@ public class Book {
         this.isbn = isbn;
     }
 
+    
+    @Override
+    public int hashCode() {
+        
+        return getId() != null ? getId().hashCode() : 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if(!(obj instanceof Book)) return false;
+
+        Book book = (Book) obj;
+
+        return getId() != null ? getId().equals(book.getId()) : book.getId() == null;
+    } 
+
+    @Override
+    public String toString(){
+        return "Book{id = " + Id + ", title = " + title + ", isbn = " +isbn + "{, authors = }" + authors + "}";
+    }
 }
